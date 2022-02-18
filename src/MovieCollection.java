@@ -165,7 +165,57 @@ public class MovieCollection
 
     private void searchCast()
     {
+        System.out.print("Enter a keyword search term: ");
+        String searchTerm = scanner.nextLine();
 
+        String cast = "";
+
+        // arraylist to hold search results
+        ArrayList<Movie> results = new ArrayList<Movie>();
+
+        // search through ALL movies in collection
+        for (int i = 0; i < movies.size(); i++)
+        {
+            cast = movies.get(i).getCast();
+            cast = cast.toLowerCase();
+        }
+
+        String[] actorList = cast.split("\\|");
+
+        ArrayList<String> actorArrayList = new ArrayList<String>();
+
+        for (int i =0; i < actorList.length; i++) {
+           if(actorArrayList.indexOf(actorList[i])==-1) {
+               actorArrayList.add(actorList[i]);
+           }
+        }
+
+        // sort the results by title
+        sortResults(results);
+     
+
+        // now, display them all to the user
+        for (int i = 0; i < results.size(); i++)
+        {
+            String keywords = results.get(i).getKeywords();
+
+            // this will print index 0 as choice 1 in the results list; better for user!
+            int choiceNum = i + 1;
+
+            System.out.println("" + choiceNum + ". " + keywords);
+        }
+
+        System.out.println("Which movie would you like to learn more about?");
+        System.out.print("Enter number: ");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        Movie selectedMovie = results.get(choice - 1);
+
+        displayMovieInfo(selectedMovie);
+
+        System.out.println("\n ** Press Enter to Return to Main Menu **");
     }
 
     private void searchKeywords()
