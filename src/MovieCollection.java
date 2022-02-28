@@ -165,7 +165,7 @@ public class MovieCollection
 
     private void searchCast()
     {
-        System.out.print("Enter a keyword search term: ");
+        System.out.print("Enter a cast member: ");
         String searchTerm = scanner.nextLine();
 
         String cast = "";
@@ -189,7 +189,7 @@ public class MovieCollection
                actorArrayList.add(actorList[i]);
            }
         }
-
+    System.out.println(actorArrayList);
         // sort the results by title
         sortResults(results);
      
@@ -197,12 +197,12 @@ public class MovieCollection
         // now, display them all to the user
         for (int i = 0; i < results.size(); i++)
         {
-            String keywords = results.get(i).getKeywords();
+            String actor = results.get(i).getCast();
 
             // this will print index 0 as choice 1 in the results list; better for user!
             int choiceNum = i + 1;
 
-            System.out.println("" + choiceNum + ". " + keywords);
+            System.out.println("" + choiceNum + ". " + actor);
         }
 
         System.out.println("Which movie would you like to learn more about?");
@@ -248,7 +248,7 @@ public class MovieCollection
         // now, display them all to the user
         for (int i = 0; i < results.size(); i++)
         {
-            String keywords = results.get(i).getKeywords();
+            String keywords = results.get(i).getTitle();
 
             // this will print index 0 as choice 1 in the results list; better for user!
             int choiceNum = i + 1;
